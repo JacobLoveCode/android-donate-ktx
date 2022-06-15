@@ -1,7 +1,12 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
+
+group = "com.github.JacobLoveCode"
+version = "0.0.1"
+
 
 android {
     compileSdk 32
@@ -28,6 +33,20 @@ android {
         jvmTarget = '1.8'
     }
 }
+
+afterEvaluate {
+    publishing{
+        publications{
+            release(MavenPublication){
+                from components.release
+                groupId = "com.github.JacobLoveCode"
+                artifactId = "android-donate-ktx"
+                version = "0.0.1"
+            }
+        }
+    }
+}
+
 
 dependencies {
 
